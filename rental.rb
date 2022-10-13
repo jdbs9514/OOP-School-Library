@@ -1,3 +1,5 @@
+require_relative './app'
+
 class Rental
   attr_accessor :date, :book, :person
 
@@ -5,9 +7,9 @@ class Rental
     @date = date
 
     @book = book
-    book.rentals << self
+    book.rentals.push(self)
 
     @person = person
-    person.rentals << self
+    person.rentals.push(self)
   end
 end
