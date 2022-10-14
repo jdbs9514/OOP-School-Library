@@ -11,7 +11,7 @@ A ruby App that models a School Library.
 
 ## Live Demo (if available)
 
-[cooming soon](https://livedemo.com)
+[coming soon](https://livedemo.com)
 
 
 ## Getting Started
