@@ -32,6 +32,22 @@ class Person < Nameable
   def of_age?
     @age >= 18
   end
+
+  # User create a person method (teacher or student)
+  def self.create_person(people)
+    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]'
+    person_type = gets.chomp
+
+    case person_type
+    when '1'
+      Student.create_student(people)
+    when '2'
+      Teacher.create_teacher(people)
+    else
+      puts 'Invalid option test'
+      nil
+    end
+  end
 end
 
 # person = Person.new(22, 'maximilianus')

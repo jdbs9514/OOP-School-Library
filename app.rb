@@ -19,55 +19,6 @@ class App
     end
   end
 
-  # create a person (teacher or student)
-  def create_person
-    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]'
-    person_type = gets.chomp
-
-    case person_type
-    when '1'
-      create_student
-    when '2'
-      create_teacher
-    else
-      puts 'Invalid option test'
-      nil
-    end
-  end
-
-  def create_student
-    print 'Name: '
-    name = gets.chomp
-
-    print 'Age: '
-    age = gets.chomp.to_i
-
-    print 'Student Class: '
-    classroom = gets.chomp
-
-    print 'Has parent permission? [Y/N]: '
-    parent_permission = gets.chomp.downcase == 'y'
-
-    student = Student.new(classroom: classroom, age: age, name: name, parent_permission: parent_permission)
-    @people.push(student)
-    puts 'Student created successfully'
-  end
-
-  def create_teacher
-    print 'Age: '
-    age = gets.chomp
-
-    print 'Name: '
-    name = gets.chomp
-
-    print 'Specialization: '
-    specialization = gets.chomp
-
-    teacher = Teacher.new(age, specialization, name)
-    @people.push(teacher)
-    puts 'Person created successfully'
-  end
-
   def create_rental
     puts 'Select a book from the following list by number'
     list_books
@@ -108,25 +59,13 @@ class App
 
   def option1(input)
     case input
-    when '1'
-      Book.list_books(@books)
-    when '2'
-      list_people
-    when '3'
-      create_person
-    # end
-  # end
-
-  # def option2(input)
-  #   case input
-    when '4'
-      Book.create_book(@books)
-    when '5'
-      create_rental
-    when '6'
-      list_rentals_for_person_id
-    when '7'
-      print 'Thank you for using this app!'
+    when '1' then Book.list_books(@books)
+    when '2' then list_people
+    when '3' then Person.create_person(@people)
+    when '4' then Book.create_book(@books)
+    when '5' then create_rental
+    when '6' then list_rentals_for_person_id
+    when '7' then print 'Thank you for using this app!'
     end
   end
 
@@ -137,7 +76,6 @@ class App
       break if input == '7'
 
       option1(input)
-      # option2(input)
     end
   end
 end
