@@ -12,30 +12,6 @@ class App
     @rentals = []
   end
 
-  # list all people
-  def list_people
-    @people.each_with_index do |person, index|
-      puts "#{index}) -> Type: #{person.class}, Name: \"#{person.name}\", ID: #{person.id}, Age: #{person.age}"
-    end
-  end
-
-  def create_rental
-    puts 'Select a book from the following list by number'
-    list_books
-    book_index = gets.chomp.to_i
-
-    puts 'Select a person from the following list by number (not id)'
-    list_people
-    person_index = gets.chomp.to_i
-
-    puts 'Date: '
-    date = gets.chomp
-
-    rental = Rental.new(date, @books[book_index], @people[person_index])
-    @rentals.push(rental)
-    puts 'Rental created successfully'
-  end
-
   def list_rentals_for_person_id
     print 'ID of person: '
     id = gets.chomp.to_i
@@ -60,10 +36,10 @@ class App
   def option1(input)
     case input
     when '1' then Book.list_books(@books)
-    when '2' then list_people
+    when '2' then Person.list_people(@people)
     when '3' then Person.create_person(@people)
     when '4' then Book.create_book(@books)
-    when '5' then create_rental
+    when '5' then Rental.create_rental(@rentals, @books, @people)
     when '6' then list_rentals_for_person_id
     when '7' then print 'Thank you for using this app!'
     end

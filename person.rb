@@ -33,6 +33,13 @@ class Person < Nameable
     @age >= 18
   end
 
+   # list all people
+   def self.list_people(people)
+    people.each_with_index do |person, index|
+      puts "#{index}) -> Type: #{person.class}, Name: \"#{person.name}\", ID: #{person.id}, Age: #{person.age}"
+    end
+  end
+
   # User create a person method (teacher or student)
   def self.create_person(people)
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]'
