@@ -12,13 +12,6 @@ class App
     @rentals = []
   end
 
-  # list all books
-  def list_books
-    @books.each_with_index do |book, index|
-      puts "#{index}) -> Title: \"#{book.title}\", Author: #{book.author}"
-    end
-  end
-
   # list all people
   def list_people
     @people.each_with_index do |person, index|
@@ -75,18 +68,6 @@ class App
     puts 'Person created successfully'
   end
 
-  def create_book
-    print 'Book Title: '
-    title = gets.chomp
-
-    print 'Author: '
-    author = gets.chomp
-
-    book = Book.new(title, author)
-    @books.push(book)
-    puts 'Book created successfully'
-  end
-
   def create_rental
     puts 'Select a book from the following list by number'
     list_books
@@ -128,18 +109,18 @@ class App
   def option1(input)
     case input
     when '1'
-      list_books
+      Book.list_books(@books)
     when '2'
       list_people
     when '3'
       create_person
-    end
-  end
+    # end
+  # end
 
-  def option2(input)
-    case input
+  # def option2(input)
+  #   case input
     when '4'
-      create_book
+      Book.create_book(@books)
     when '5'
       create_rental
     when '6'
@@ -156,7 +137,7 @@ class App
       break if input == '7'
 
       option1(input)
-      option2(input)
+      # option2(input)
     end
   end
 end
