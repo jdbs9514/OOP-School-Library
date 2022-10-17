@@ -15,8 +15,8 @@ class Book
     rental.book = self
   end
 
-   # list all books
-   def self.list_books(books)
+  # list all books
+  def self.list_books(books)
     books.each_with_index do |book, index|
       puts "#{index}) -> Title: \"#{book.title}\", Author: #{book.author}"
     end

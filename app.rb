@@ -12,15 +12,6 @@ class App
     @rentals = []
   end
 
-  def list_rentals_for_person_id
-    print 'ID of person: '
-    id = gets.chomp.to_i
-    puts 'Rentals:'
-    @rentals.each do |rental|
-      puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
-    end
-  end
-
   def dashboard
     puts '----- Choose An Option -----'
     puts '1 - List all books'
@@ -40,12 +31,32 @@ class App
     when '3' then Person.create_person(@people)
     when '4' then Book.create_book(@books)
     when '5' then Rental.create_rental(@rentals, @books, @people)
-    when '6' then list_rentals_for_person_id
+    when '6' then Rental.list_rentals_for_person_id(@rentals, @people)
     when '7' then print 'Thank you for using this app!'
     end
   end
 
   def run
+    # put FAKE DATA into @books array and @people array
+    books_dummy_data = [
+      ['The Grass is Always Greener', 'Jeffrey Archer'],
+      ['Murder!', 'Arnold Bennett'],
+      ['A Boy at Seven', 'John Bidwell'],
+      ['The Open Boat', 'Stephen Crane'],
+      ['The Higgler', 'A. E. Coppard']
+    ]
+    books_dummy_data.each do |book|
+      @books.push(Book.new(book[0], book[1]))
+    end
+    students_names = %w[John Ana Kevin]
+    students_names.each do |name|
+      @people.push(Student.new(classroom: 'Alpha', age: 22, name: name, parent_permission: true))
+    end
+    teachers_names = %w[Clark Julia Paul]
+    teachers_names.each do |name|
+      @people.push(Teacher.new(22, 'Ruby', name))
+    end
+    # run the program
     loop do
       dashboard
       input = gets.chomp

@@ -23,18 +23,8 @@ class Person < Nameable
     @name
   end
 
-  private
-
-  def add_rental(book, date)
-    Rental.new(date, book, self)
-  end
-
-  def of_age?
-    @age >= 18
-  end
-
-   # list all people
-   def self.list_people(people)
+  # list all people
+  def self.list_people(people)
     people.each_with_index do |person, index|
       puts "#{index}) -> Type: #{person.class}, Name: \"#{person.name}\", ID: #{person.id}, Age: #{person.age}"
     end
@@ -54,6 +44,16 @@ class Person < Nameable
       puts 'Invalid option test'
       nil
     end
+  end
+
+  private
+
+  def add_rental(book, date)
+    Rental.new(date, book, self)
+  end
+
+  def of_age?
+    @age >= 18
   end
 end
 
