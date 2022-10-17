@@ -36,6 +36,12 @@ To get a local copy up and running follow these simple example steps.
 - Twitter: [@twitter](https://twitter.com/JODA1015)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/macoin)
 
+👤 **Tiago Lelinski**
+
+- GitHub: [@tiagomarin](https://github.com/tiagomarin)
+- Twitter: [@LelinskiMarin](https://twitter.com/LelinskiMarin)
+- LinkedIn: [Tiago](https://www.linkedin.com/in/tiago-lelinski-marin/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!

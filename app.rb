@@ -12,107 +12,6 @@ class App
     @rentals = []
   end
 
-  # list all books
-  def list_books
-    @books.each_with_index do |book, index|
-      puts "#{index}) -> Title: \"#{book.title}\", Author: #{book.author}"
-    end
-  end
-
-  # list all people
-  def list_people
-    @people.each_with_index do |person, index|
-      puts "#{index}) -> Type: #{person.class}, Name: \"#{person.name}\", ID: #{person.id}, Age: #{person.age}"
-    end
-  end
-
-  # create a person (teacher or student)
-  def create_person
-    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]'
-    person_type = gets.chomp
-
-    case person_type
-    when '1'
-      create_student
-    when '2'
-      create_teacher
-    else
-      puts 'Invalid option test'
-      nil
-    end
-  end
-
-  def create_student
-    print 'Name: '
-    name = gets.chomp
-
-    print 'Age: '
-    age = gets.chomp.to_i
-
-    print 'Student Class: '
-    classroom = gets.chomp
-
-    print 'Has parent permission? [Y/N]: '
-    parent_permission = gets.chomp.downcase == 'y'
-
-    student = Student.new(classroom: classroom, age: age, name: name, parent_permission: parent_permission)
-    @people.push(student)
-    puts 'Student created successfully'
-  end
-
-  def create_teacher
-    print 'Age: '
-    age = gets.chomp
-
-    print 'Name: '
-    name = gets.chomp
-
-    print 'Specialization: '
-    specialization = gets.chomp
-
-    teacher = Teacher.new(age, specialization, name)
-    @people.push(teacher)
-    puts 'Person created successfully'
-  end
-
-  def create_book
-    print 'Book Title: '
-    title = gets.chomp
-
-    print 'Author: '
-    author = gets.chomp
-
-    book = Book.new(title, author)
-    @books.push(book)
-    puts 'Book created successfully'
-  end
-
-  def create_rental
-    puts 'Select a book from the following list by number'
-    list_books
-    book_index = gets.chomp.to_i
-
-    puts 'Select a person from the following list by number (not id)'
-    list_people
-    person_index = gets.chomp.to_i
-
-    puts 'Date: '
-    date = gets.chomp
-
-    rental = Rental.new(date, @books[book_index], @people[person_index])
-    @rentals.push(rental)
-    puts 'Rental created successfully'
-  end
-
-  def list_rentals_for_person_id
-    print 'ID of person: '
-    id = gets.chomp.to_i
-    puts 'Rentals:'
-    @rentals.each do |rental|
-      puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
-    end
-  end
-
   def dashboard
     puts '----- Choose An Option -----'
     puts '1 - List all books'
@@ -127,36 +26,43 @@ class App
 
   def option1(input)
     case input
-    when '1'
-      list_books
-    when '2'
-      list_people
-    when '3'
-      create_person
-    end
-  end
-
-  def option2(input)
-    case input
-    when '4'
-      create_book
-    when '5'
-      create_rental
-    when '6'
-      list_rentals_for_person_id
-    when '7'
-      print 'Thank you for using this app!'
+    when '1' then Book.list_books(@books)
+    when '2' then Person.list_people(@people)
+    when '3' then Person.create_person(@people)
+    when '4' then Book.create_book(@books)
+    when '5' then Rental.create_rental(@rentals, @books, @people)
+    when '6' then Rental.list_rentals_for_person_id(@rentals, @people)
+    when '7' then print 'Thank you for using this app!'
     end
   end
 
   def run
+    # put FAKE DATA into @books array and @people array
+    books_dummy_data = [
+      ['The Grass is Always Greener', 'Jeffrey Archer'],
+      ['Murder!', 'Arnold Bennett'],
+      ['A Boy at Seven', 'John Bidwell'],
+      ['The Open Boat', 'Stephen Crane'],
+      ['The Higgler', 'A. E. Coppard']
+    ]
+    books_dummy_data.each do |book|
+      @books.push(Book.new(book[0], book[1]))
+    end
+    students_names = %w[John Ana Kevin]
+    students_names.each do |name|
+      @people.push(Student.new(classroom: 'Alpha', age: 22, name: name, parent_permission: true))
+    end
+    teachers_names = %w[Clark Julia Paul]
+    teachers_names.each do |name|
+      @people.push(Teacher.new(22, 'Ruby', name))
+    end
+    # run the program
     loop do
       dashboard
       input = gets.chomp
       break if input == '7'
 
       option1(input)
-      option2(input)
     end
   end
 end

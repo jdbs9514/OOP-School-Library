@@ -23,6 +23,29 @@ class Person < Nameable
     @name
   end
 
+  # list all people
+  def self.list_people(people)
+    people.each_with_index do |person, index|
+      puts "#{index}) -> Type: #{person.class}, Name: \"#{person.name}\", ID: #{person.id}, Age: #{person.age}"
+    end
+  end
+
+  # User create a person method (teacher or student)
+  def self.create_person(people)
+    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]'
+    person_type = gets.chomp
+
+    case person_type
+    when '1'
+      Student.create_student(people)
+    when '2'
+      Teacher.create_teacher(people)
+    else
+      puts 'Invalid option test'
+      nil
+    end
+  end
+
   private
 
   def add_rental(book, date)
