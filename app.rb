@@ -2,6 +2,7 @@ require_relative './book'
 require_relative './rental'
 require_relative './student'
 require_relative './teacher'
+require 'json'
 
 class App
   attr_accessor :books, :people, :rentals
@@ -56,11 +57,18 @@ class App
     teachers_names.each do |name|
       @people.push(Teacher.new(22, 'Ruby', name))
     end
+    
     # run the program
     loop do
       dashboard
       input = gets.chomp
-      break if input == '7'
+
+      # ------------------------------------------
+      if input == '7' do
+        save_data(@books, @people, @rentals)
+        break 
+      end
+      # ------------------------------------------
 
       option1(input)
     end
