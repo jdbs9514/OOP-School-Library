@@ -11,9 +11,9 @@ class App
   attr_accessor :books, :people, :rentals
 
   def initialize
-    @books = []
-    @people = []
-    @rentals = []
+    @books = LoadData.read_books || []
+    @people = LoadData.read_people || []
+    @rentals = LoadData.read_rentals(@books, @people) || []
   end
 
   def dashboard
@@ -41,7 +41,7 @@ class App
   end
 
   def run
-    put_fake_data(@books, @people, @rentals)
+    # put_fake_data(@books, @people, @rentals)
 
     # run the program
     loop do
