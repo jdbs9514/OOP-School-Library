@@ -64,16 +64,13 @@ class App
     loop do
       dashboard
       input = gets.chomp
-
-      # ------------------------------------------
       if input == '7'
+        # save data on JSON files when exit the program
         SaveData.save_books(@books)
         SaveData.save_people(@people)
         SaveData.save_rentals(@rentals)
         break
       end
-      # ------------------------------------------
-
       option1(input)
     end
   end

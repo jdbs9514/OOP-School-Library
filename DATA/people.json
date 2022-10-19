@@ -1,6 +1,6 @@
 [
   {
-    "id": "c416141d-69a7-4f07-8ce6-55089efd4f67",
+    "id": "d2da7fe4-4a79-485f-8fb5-6fa020c28828",
     "name": "John",
     "age": 22,
     "parent_permission": true,
@@ -10,7 +10,7 @@
     "classroom": "Alpha"
   },
   {
-    "id": "ef8a1448-3da7-46f2-86d3-3e5edd6c5eb2",
+    "id": "1e0cc4dd-e68e-46aa-b6bd-82964c863773",
     "name": "Ana",
     "age": 22,
     "parent_permission": true,
@@ -20,26 +20,26 @@
     "classroom": "Alpha"
   },
   {
-    "id": "38cd46a5-bbbf-43bb-9a57-0596cfc32f0c",
+    "id": "0d6bda4b-b430-4124-9231-8e7aa2fc71cb",
     "name": "Kevin",
     "age": 22,
     "parent_permission": true,
     "rentals": [
-      "#<Rental:0x00007f89ba4143a8>"
+
     ],
     "classroom": "Alpha"
   },
   {
-    "id": "d0c609f1-5cb5-4643-818e-fbe3f9f2b622",
+    "id": "92157d99-0382-447e-b333-660bf3ad470e",
     "name": "Clark",
     "age": 22,
     "rentals": [
-      "#<Rental:0x00007f89ba412918>"
+
     ],
     "specialization": "Ruby"
   },
   {
-    "id": "a6384d8b-b680-4b02-8566-da5428545d1e",
+    "id": "46954be4-bd10-48e0-bd00-2a47936893bf",
     "name": "Julia",
     "age": 22,
     "rentals": [
@@ -48,11 +48,11 @@
     "specialization": "Ruby"
   },
   {
-    "id": "057c845c-7cee-459a-b590-b9d0445ac7b4",
+    "id": "fcc4faf7-3f75-4cf1-838e-6bde8eec9c36",
     "name": "Paul",
     "age": 22,
     "rentals": [
-      "#<Rental:0x00007f89ba4135c0>"
+
     ],
     "specialization": "Ruby"
   }

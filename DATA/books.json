@@ -1,14 +1,14 @@
 [
   {
-    "id": "c5d8c85c-5d59-4d47-a750-2393de21d4de",
+    "id": "bd6789ab-ebec-4bf8-abf3-dd0470392172",
     "title": "The Grass is Always Greener",
     "author": "Jeffrey Archer",
     "rentals": [
-      "#<Rental:0x00007f89ba412918>"
+
     ]
   },
   {
-    "id": "f88fdda0-88db-4461-b192-72f0a1e13e92",
+    "id": "b314ff7a-5e86-486e-a0ae-1e23817a4d5a",
     "title": "Murder!",
     "author": "Arnold Bennett",
     "rentals": [
@@ -16,15 +16,15 @@
     ]
   },
   {
-    "id": "cbfe7c82-a5e7-49ed-81c0-e245eacea59d",
+    "id": "92ce8807-28ef-4ff9-b0f8-77e2d6d79cd4",
     "title": "A Boy at Seven",
     "author": "John Bidwell",
     "rentals": [
-      "#<Rental:0x00007f89ba4143a8>"
+
     ]
   },
   {
-    "id": "99b6dfb7-243a-4a7e-b0f1-cc4f439350e7",
+    "id": "2e7b083f-72cc-437f-ac17-9717721befc8",
     "title": "The Open Boat",
     "author": "Stephen Crane",
     "rentals": [
@@ -32,11 +32,11 @@
     ]
   },
   {
-    "id": "ce75e24c-0a9f-4834-b8f6-de72bf6ec29c",
+    "id": "b39e7da2-41cb-4426-8236-7ddca62d9721",
     "title": "The Higgler",
     "author": "A. E. Coppard",
     "rentals": [
-      "#<Rental:0x00007f89ba4135c0>"
+
     ]
   }
 ]
