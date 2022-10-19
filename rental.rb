@@ -41,9 +41,10 @@ class Rental
     puts ''
     rentals.each do |rental|
       if rental.person.id == people[id - 1].id
-        puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" 
+        puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
       end
-    puts ''
     end
+    puts '-----------------------------------------------'
+    puts ''
   end
 end

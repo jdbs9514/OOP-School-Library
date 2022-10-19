@@ -5,7 +5,7 @@ class LoadData
 
     books_file = File.open(file_path)
     books = []
-    JSON.parse(books_file.read).each { |book| books << Book.new( book['id'], book['title'], book['author']) }
+    JSON.parse(books_file.read).each { |book| books << Book.new(book['title'], book['author'], book['id']) }
     books_file.close
     books
   end
@@ -17,21 +17,22 @@ class LoadData
     people_file = File.open(file_path)
     people = []
     JSON.parse(people_file.read).each do |person|
-      if person['type'] == 'Student'
+      case person['type']
+      when 'Student'
         people.push(Student.new(
                       person['classroom'],
                       person['age'],
                       person['name'],
-                      person['id'], 
+                      person['id'],
                       parent_permission: person['parent_permission']
                     ))
 
-      elsif person['type'] == 'Teacher'
+      when 'Teacher'
         people.push(Teacher.new(
-                    person['specialization'],
-                    person['age'],
-                    person['name'],
-                    person['id']
+                      person['specialization'],
+                      person['age'],
+                      person['name'],
+                      person['id']
                     ))
       end
     end
@@ -44,14 +45,14 @@ class LoadData
     file_path = './DATA/rentals.json'
     return unless File.exist?(file_path)
     return if books.empty?
-    
+
     rentals_file = File.open(file_path)
     rentals = []
     JSON.parse(rentals_file.read).each do |rental|
-      book = books.select { |book| book.id == rental['book_id'] }
+      rental_book = books.select { |book| book.id == rental['book_id'] }
       rental_person = people.select { |person| person.id == rental['person_id'] }
 
-      rentals.push(Rental.new(book[0], rental_person[0], rental['date'], rental['id']))
+      rentals.push(Rental.new(rental_book[0], rental_person[0], rental['date'], rental['id']))
     end
     rentals_file.close
     rentals

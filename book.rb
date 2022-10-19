@@ -4,7 +4,7 @@ require 'securerandom'
 class Book
   attr_accessor :title, :author, :rentals, :id
 
-  def initialize(id = SecureRandom.uuid, title, author)
+  def initialize(title, author, id = SecureRandom.uuid)
     @id = id
     @title = title
     @author = author
