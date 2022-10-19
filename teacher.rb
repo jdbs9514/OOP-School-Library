@@ -1,10 +1,11 @@
 require_relative './person'
+require 'securerandom'
 
 class Teacher < Person
   attr_accessor :specialization
 
-  def initialize(age, specialization, name)
-    super(age, name)
+  def initialize(specialization, age, name, id = SecureRandom.uuid)
+    super(age, name, id,)
     @specialization = specialization
   end
 
@@ -22,8 +23,7 @@ class Teacher < Person
     print 'Specialization: '
     specialization = gets.chomp
 
-    teacher = Teacher.new(age, specialization, name)
-    people.push(teacher)
+    people.push(Teacher.new(specialization, age, name))
     puts 'Person created successfully'
   end
 end

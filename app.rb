@@ -2,6 +2,10 @@ require_relative './book'
 require_relative './rental'
 require_relative './student'
 require_relative './teacher'
+require_relative './save_data'
+require_relative './load_data'
+require_relative './fake_data'
+require 'date'
 
 class App
   attr_accessor :books, :people, :rentals
@@ -37,30 +41,19 @@ class App
   end
 
   def run
-    # put FAKE DATA into @books array and @people array
-    books_dummy_data = [
-      ['The Grass is Always Greener', 'Jeffrey Archer'],
-      ['Murder!', 'Arnold Bennett'],
-      ['A Boy at Seven', 'John Bidwell'],
-      ['The Open Boat', 'Stephen Crane'],
-      ['The Higgler', 'A. E. Coppard']
-    ]
-    books_dummy_data.each do |book|
-      @books.push(Book.new(book[0], book[1]))
-    end
-    students_names = %w[John Ana Kevin]
-    students_names.each do |name|
-      @people.push(Student.new(classroom: 'Alpha', age: 22, name: name, parent_permission: true))
-    end
-    teachers_names = %w[Clark Julia Paul]
-    teachers_names.each do |name|
-      @people.push(Teacher.new(22, 'Ruby', name))
-    end
+    put_fake_data(@books, @people, @rentals)
+
     # run the program
     loop do
       dashboard
       input = gets.chomp
-      break if input == '7'
+      if input == '7'
+        # save data on JSON files when exit the program
+        SaveData.save_books(@books)
+        SaveData.save_people(@people)
+        SaveData.save_rentals(@rentals)
+        break
+      end
 
       option1(input)
     end

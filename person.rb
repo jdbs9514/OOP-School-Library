@@ -2,13 +2,14 @@ require_relative './nameable'
 require_relative './decorator'
 require_relative './capitalize'
 require_relative './trimmer'
+require 'securerandom'
 
 class Person < Nameable
-  attr_accessor :name, :id, :age, :rentals
+  attr_accessor :name, :id, :age, :rentals, :parent_permission
 
-  def initialize(age, name = 'Unknow', parent_permission: true)
+  def initialize(age, name, id, parent_permission: true)
     super()
-    @id = Random.rand(1..100)
+    @id = id
     @name = name
     @age = age
     @parent_permission = parent_permission
@@ -26,7 +27,7 @@ class Person < Nameable
   # list all people
   def self.list_people(people)
     people.each_with_index do |person, index|
-      puts "#{index}) -> Type: #{person.class}, Name: \"#{person.name}\", ID: #{person.id}, Age: #{person.age}"
+      puts "#{index}) -> Type: #{person.class}, Name: \"#{person.name}\", Age: #{person.age}, ID: #{person.id}"
     end
   end
 
