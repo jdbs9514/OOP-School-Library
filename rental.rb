@@ -1,14 +1,15 @@
 require_relative './app'
+require 'securerandom'
+require 'date'
 
 class Rental
-  attr_accessor :date, :book, :person
+  attr_accessor :date, :book, :person, :id
 
-  def initialize(date, book, person)
+  def initialize(book, person, date = DateTime.now.strftime('%d/%m/%Y'), id = SecureRandom.uuid)
+    @id = id
     @date = date
-
     @book = book
     book.rentals.push(self)
-
     @person = person
     person.rentals.push(self)
   end
@@ -22,24 +23,28 @@ class Rental
     Person.list_people(people)
     person_index = gets.chomp.to_i
 
-    puts 'Date: '
-    date = gets.chomp
-
-    rental = Rental.new(date, books[book_index], people[person_index])
+    rental = Rental.new(books[book_index], people[person_index])
     rentals.push(rental)
     puts 'Rental created successfully'
   end
 
   def self.list_rentals_for_person_id(rentals, people)
     puts 'Select a person from the following list by number (not id)'
-    people.each do |person|
-      puts "ID: #{person.id} - #{person.name}"
+    people.each_with_index do |person, index|
+      puts "[#{index + 1}] - #{person.name}"
     end
     puts 'ID of person: '
     id = gets.chomp.to_i
+    puts ''
+    puts '-----------------------------------------------'
     puts 'Rentals:'
+    puts ''
     rentals.each do |rental|
-      puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
+      if rental.person.id == people[id - 1].id
+        puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
+      end
     end
+    puts '-----------------------------------------------'
+    puts ''
   end
 end

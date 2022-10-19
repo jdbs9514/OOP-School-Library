@@ -1,9 +1,11 @@
 require_relative './rental'
+require 'securerandom'
 
 class Book
-  attr_accessor :title, :author, :rentals
+  attr_accessor :title, :author, :rentals, :id
 
-  def initialize(title, author)
+  def initialize(title, author, id = SecureRandom.uuid)
+    @id = id
     @title = title
     @author = author
     @rentals = []
