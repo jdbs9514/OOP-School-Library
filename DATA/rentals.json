@@ -1,0 +1,20 @@
+[
+  {
+    "id": "c1199faf-0edf-4b39-9e3e-b202ab0dee15",
+    "date": "18/10/2022",
+    "book": "#<Book:0x00007f89ba4dd2d0>",
+    "person": "#<Student:0x00007f89ba4e0ac0>"
+  },
+  {
+    "id": "6eb3f3ed-6a20-4a8a-a8a1-f601f9dfb598",
+    "date": "18/10/2022",
+    "book": "#<Book:0x00007f89ba4e2208>",
+    "person": "#<Teacher:0x00007f89ba4e7230>"
+  },
+  {
+    "id": "31b567d9-abef-4f38-8e9a-90cf0158231b",
+    "date": "18/10/2022",
+    "book": "#<Book:0x00007f89ba4de310>",
+    "person": "#<Teacher:0x00007f89ba4e75a0>"
+  }
+]

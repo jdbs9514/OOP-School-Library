@@ -1,14 +1,15 @@
 require_relative './app'
+require 'securerandom'
+require 'date'
 
 class Rental
-  attr_accessor :date, :book, :person
+  attr_accessor :date, :book, :person, :id
 
-  def initialize(date, book, person)
-    @date = date
-
+  def initialize(book, person)
+    @id = SecureRandom.uuid
+    @date = DateTime.nowru.strftime('%d/%m/%Y')
     @book = book
     book.rentals.push(self)
-
     @person = person
     person.rentals.push(self)
   end
@@ -22,10 +23,10 @@ class Rental
     Person.list_people(people)
     person_index = gets.chomp.to_i
 
-    puts 'Date: '
-    date = gets.chomp
+    # puts 'Date: '
+    # date = gets.chomp
 
-    rental = Rental.new(date, books[book_index], people[person_index])
+    rental = Rental.new(books[book_index], people[person_index])
     rentals.push(rental)
     puts 'Rental created successfully'
   end
