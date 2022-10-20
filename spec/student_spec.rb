@@ -16,7 +16,7 @@ describe Student do
     end
 
     it 'instace of Student class' do
-      expect(student.play_hooky).to eq "¯\(ツ)/¯"
+      expect(student.play_hooky).to eq '¯\(ツ)/¯'
     end
   end
 end
